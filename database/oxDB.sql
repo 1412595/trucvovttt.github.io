@@ -1,3 +1,5 @@
+#alter user 'root'@'localhost' identified with mysql_native_password by '1111';
+
 create database ox;
 use ox;
 
