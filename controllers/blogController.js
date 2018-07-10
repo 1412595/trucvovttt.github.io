@@ -5,11 +5,25 @@ var categoryRepo = require('../repos/categoryRepo');
 var blogRepo = require('../repos/blogRepo');
 
 router.get('/', (req, res) => {
-    res.render('blog/blog-index');
+    blogRepo.getAll().then(rows => {
+        //console.log(rows);
+        var vm = {
+            layout: 'main.handlebars',
+            blog: rows
+        };
+        res.render('blog/blog-index', vm);
+    });
 });
 
 router.get('/blog-index', (req, res) => {
-    res.render('blog/blog-index');
+    blogRepo.getAll().then(rows => {
+        //console.log(rows);
+        var vm = {
+            layout: 'main.handlebars',
+            blog: rows
+        };
+        res.render('blog/blog-index', vm);
+    });
 });
 
 router.get('/blog-detail', (req, res) => {
