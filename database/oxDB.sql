@@ -21,6 +21,14 @@ create table account (
     status bit default 1
 );
 
+create table message (
+	messageID int primary key auto_increment,
+    uname nvarchar(50),
+    email varchar(50),
+    subject nvarchar(100),
+    content nvarchar(1000)
+);
+
 create table blog (
 	blogID int primary key auto_increment,
     blogTitle nvarchar(200),
