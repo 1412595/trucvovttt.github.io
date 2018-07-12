@@ -64,10 +64,10 @@ Insert into account (`username`,`password`,`accountDOB`,`accountGender`,`account
 ('b','123456','2001-05-15',1,'b@gmail.com',1,1);
 
 Insert into blog (`blogTitle`,`blogContent`,`blogDate`,`blogImage`,`blogView`,`blogComment`,`categoryID`,`accountID`) values 
-('abc1','x','2017-05-15 00:00:00','abc1.png',100,10,1,1),
-('abc2','y','2017-05-16 00:00:00','abc2.png',100,10,2,1),
-('abc3','z','2017-05-17 00:00:00','abc3.png',100,10,3,1),
-('abc4','w','2017-05-18 00:00:00','abc4.png',100,10,1,1);
+('abc1','x','2017-05-15 00:00:00','blog1.jpg',100,10,1,1),
+('abc2','y','2017-05-16 00:00:00','blog2.jpg',100,10,2,1),
+('abc3','z','2017-05-17 00:00:00','blog3.jpg',100,10,3,1),
+('abc4','w','2017-05-18 00:00:00','blog4.jpg',100,10,1,1);
 
 Insert into blogComment (`blogID`,`accountID`,`commentDate`,`commentContent`) values 
 (1,2,'2017-06-16 00:00:00','fdg'),
