@@ -195,4 +195,22 @@
     ------------------------------ */
 	new WOW().init();
 
+	refrClock();
+
 }(jQuery));
+
+function refrClock() {
+    var d = new Date();
+    var s = d.getSeconds();
+    var m = d.getMinutes();
+    var h = d.getHours();
+    var date = d.getDate();
+    var month = d.getMonth() + 1;
+    var year = d.getFullYear();
+    if (s < 10) { s = "0" + s }
+    if (m < 10) { m = "0" + m }
+    if (h < 10) { h = "0" + h }
+    if (date < 10) { date = "0" + date }
+    if (month < 10) { month = "0" + month }
+    document.getElementById("clock").value = year + '-' + month + '-' + date + ' ' + h + ':' + m + ':' + s;
+}

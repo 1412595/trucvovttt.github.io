@@ -1,0 +1,29 @@
+<section class="blog-area blog-page" id="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="single-post">
+                    <form action="addBlog" method="POST" role="form">
+                        <div class="post-details">
+                            <label>Image</label>
+                            <input type="file" required="true" name="image">
+                            <hr>
+                            <label>Category</label>
+                            <select name="categoryName" required>
+                                {{#each category}}
+                                    <option>{{categoryName}}</option>
+                                {{/each}}
+                            </select>
+                            <label>Title</label>
+                            <input type="text" placeholder="Enter Blog Title" required="true" name="blogTitle">
+                            <label>Content</label>
+                            <textarea placeholder="Enter Blog Content" name="blogContent"></textarea>
+                            <input type="text" id="clock" name="clock" value="" hidden="true">
+                            <button type="submit" name="blog-submit"><a href="blog-index"><span>Post Blog</span></a></button>  
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

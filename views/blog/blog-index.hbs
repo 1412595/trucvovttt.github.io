@@ -1,19 +1,4 @@
-		<!-- breadcrumb area start -->
-		<section class="hero-area breadcrumb-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="hero-area-content">
-							<h1>Our Blog</h1>
-                            <ul>
-                                <li><a href="index">Home</a></li>
-                                <li><a href="blog">Blog</a></li>
-                            </ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section><!-- breadcrumb area end -->
+
 		<!-- blog section start -->
 		<section class="blog-area blog-page" id="blog">
 			<div class="container">
@@ -22,20 +7,21 @@
 					<div class="col-lg-4 col-md-6">
 					    <div class="single-post">
 							<div class="post-thumbnail">
-								<a href="blog/blog-detail"><img src="assets/img/blog/blog1.jpg" alt="blog"></a>
+								<a href="blog/blog-detail/{{blogID}}"><img src="assets/img/blog/blog1.jpg" alt="blog"></a>
 							</div>
 							<div class="post-details">
 								<div class="post-author">
-									<a href="blog/blog-detail"><i class="icofont icofont-user"></i>{{username}}</a>
-									<a href="blog/blog-detail"><i class="icofont icofont-speech-comments"></i>{{blogComment}}</a>
-									<a href="blog/blog-detail"><i class="icofont icofont-calendar"></i>{{blogDate}}</a>
+									<a href="#"><i class="icofont icofont-user"></i>{{username}}</a>
+									<a href="#"><i class="icofont icofont-speech-comments"></i>{{blogComment}}</a>
+									<a href="#"><i class="icofont icofont-calendar"></i>{{blogDate}}</a>
 								</div>
-								<h4 class="post-title"><a href="#">{{blogTitle}}</a></h4>
+								<h4 class="post-title"><a href="blog/blog-detail/{{blogID}}">{{blogTitle}}</a></h4>
 								<p>{{blogContent}}</p>
 							</div>
 						</div>
 					</div>
 					{{/each}}
+				</div>
 				<div class="row">
 					<div class="col-lg-12">
 					    <div class="pagination">

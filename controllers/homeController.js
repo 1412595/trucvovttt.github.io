@@ -16,11 +16,22 @@ router.get('/', (req, res) => {
 });
 
 router.get('/index', (req, res) => {
-    res.render('home/index');
+    blogRepo.lastestPost().then(rows => {
+        //console.log(rows);
+        var vm = {
+            layout: 'main.handlebars',
+            blog: rows
+        };
+        res.render('home/index',vm);
+    });
 });
 
 router.get('/newMessage', (req, res) => {
-    res.render('home/index');
+    var vm = {
+        layout: 'main.handlebars',
+        showAlert: false
+    };
+    res.render('home/index',vm);
 });
 
 router.post('/newMessage', (req, res) => {
@@ -32,7 +43,7 @@ router.post('/newMessage', (req, res) => {
     }
     console.log(mess);
     messageRepo.new(mess);
-    res.render('home/index');
+    res.redirect('index');
 });
 
 module.exports = router;
