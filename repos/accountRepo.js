@@ -1,6 +1,6 @@
 var db = require('../fn/db');
 
-exports.getAll = () => {
-    var sql = 'select * from account';
+exports.login = (a) => {
+    var sql = `select * from account where username = '${a.username}' and password = '${a.password}'`;
     return db.load(sql);
 }

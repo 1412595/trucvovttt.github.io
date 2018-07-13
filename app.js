@@ -7,11 +7,12 @@ var wnumb = require('wnumb');
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 
-// var handleLayoutMDW = require('./middle-wares/handleLayout');
-// var handle404MDW = require('./middle-wares/handle404');
+var handleLayoutMDW = require('./middle-wares/handleLayout');
+var handle404MDW = require('./middle-wares/handle404');
 
 var homeController = require('./controllers/homeController'),
-    blogController = require('./controllers/blogController');
+    blogController = require('./controllers/blogController'),
+    accountController = require('./controllers/accountController');
 
 var app = express();
 
@@ -58,23 +59,24 @@ var sessionStore = new MySQLStore({
     }
 });
 
-// app.use(session({
-//     key: 'session_cookie_name',
-//     secret: 'session_cookie_secret',
-//     store: sessionStore,
-//     resave: false,
-//     saveUninitialized: false
-// }));
+app.use(session({
+    key: 'session_cookie_name',
+    secret: 'session_cookie_secret',
+    store: sessionStore,
+    resave: false,
+    saveUninitialized: false
+}));
 
 app.get('/', (req, res) => {
     res.redirect('/home');
 });
 
-//app.use(handleLayoutMDW);
+// app.use(handleLayoutMDW);
 // app.use(handle404MDW);
 
 app.use('/home', homeController);
 app.use('/blog', blogController);
+app.use('/account', accountController);
 
 
 app.listen(3000, () => {

@@ -5,25 +5,40 @@ var categoryRepo = require('../repos/categoryRepo');
 var blogRepo = require('../repos/blogRepo');
 
 router.get('/', (req, res) => {
-    blogRepo.getAll().then(rows => {
-        //console.log(rows);
+
+    if (req.session.isLogged == false) {
         var vm = {
-            layout: 'mainBlog.handlebars',
-            blog: rows
-        };
-        res.render('blog/blog-index', vm);
-    });
+            layout: 'mainAccount.handlebars'
+        }
+        res.render('account/login', vm);
+    } else {
+        blogRepo.getAll().then(rows => {
+            //console.log(rows);
+            var vm = {
+                layout: 'mainBlog.handlebars',
+                blog: rows
+            };
+            res.render('blog/blog-index', vm);
+        });
+    }
 });
 
 router.get('/blog-index', (req, res) => {
-    blogRepo.getAll().then(rows => {
-        //console.log(rows);
+    if (req.session.isLogged == false) {
         var vm = {
-            layout: 'mainBlog.handlebars',
-            blog: rows
-        };
-        res.render('blog/blog-index', vm);
-    });
+            layout: 'mainAccount.handlebars'
+        }
+        res.render('account/login', vm);
+    } else {
+        blogRepo.getAll().then(rows => {
+            //console.log(rows);
+            var vm = {
+                layout: 'mainBlog.handlebars',
+                blog: rows
+            };
+            res.render('blog/blog-index', vm);
+        });
+    }
 });
 
 router.get('/blog-detail/:id', (req, res) => {
@@ -34,7 +49,7 @@ router.get('/blog-detail/:id', (req, res) => {
         var vm = {
             layout: 'mainBlog.handlebars',
             category: c,
-            list:l,
+            list: l,
             blog: b
         };
         res.render('blog/blog-detail', vm);
@@ -54,8 +69,7 @@ router.get('/blog-add', (req, res) => {
 
 router.post('/addBlog', (req, res) => {
     console.log("abc");
-    blogRepo.getByName(req.body.categoryName).then(value =>
-    {
+    blogRepo.getByName(req.body.categoryName).then(value => {
         var newBlog = {
             blogTitle: req.body.blogTitle,
             blogContent: req.body.blogContent,
