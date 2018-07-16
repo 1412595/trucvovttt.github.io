@@ -83,13 +83,14 @@ router.post('/addBlog', (req, res) => {
         }
         console.log(newBlog);
         blogRepo.new(newBlog);
-        blogRepo.getAll().then(rows => {
-            var vm = {
-                layout: 'mainBlog.handlebars',
-                blog: rows
-            };
-            res.render('blog/blog-index', vm);
-        });
+        // blogRepo.getAll().then(rows => {
+        //     var vm = {
+        //         layout: 'mainBlog.handlebars',
+        //         blog: rows
+        //     };
+        //     res.render('blog/blog-index', vm);
+        // });
+        res.redirect('blog-index');
     });
 });
 

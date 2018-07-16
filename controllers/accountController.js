@@ -1,9 +1,10 @@
-var express = require('express'),
-    SHA256 = require('crypto-js/sha256');;
+var express = require('express');
+    // SHA256 = require('crypto-js/sha256');
 
-var router = express.Router();
+
 var accountRepo = require('../repos/accountRepo');
 var blogRepo = require('../repos/blogRepo');
+var router = express.Router();
 
 router.get('/login', (req, res) => {
     var vm = {
@@ -19,12 +20,10 @@ router.post('/login', (req, res) => {
         // password: SHA256(req.body.rawPWD).toString()
     };
     accountRepo.login(user).then(rows => {
-
-        console.log(rows.length);
         if (rows.length > 0) {
             if (rows[0].accountType === 1) {
                 blogRepo.getAll().then(b => {
-                    //console.log(rows);
+                    console.log(b);
                     var vm = {
                         layout: 'mainBlog.handlebars',
                         blog: b
@@ -33,7 +32,7 @@ router.post('/login', (req, res) => {
                 });
             } else {
                 blogRepo.lastestPost().then(l => {
-                    //console.log(rows);
+                    console.log(l);
                     var vm = {
                         layout: 'main.handlebars',
                         blog: l
@@ -47,13 +46,14 @@ router.post('/login', (req, res) => {
                 errorMsg: 'Login failed',
                 layout: 'mainAccount.handlebars'
             };
+            console.log("fail");
             res.render('account/login', vm);
         }
     });
 });
 
 router.post('/logout', (req, res) => {
-    console.log('aaa');
+    // console.log('aaa');
     req.session.isLogged = false;
     req.session.user = null;
     res.redirect(req.headers.referer);
