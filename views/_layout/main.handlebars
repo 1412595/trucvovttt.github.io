@@ -39,6 +39,53 @@
 <body data-spy="scroll" data-target=".header" data-offset="50">
 	<!-- Page loader -->
 	<div id="preloader"></div>
+	<!-- header section start -->
+	<header class="header">
+		<div class="container">
+			<div class="row flexbox-center">
+				<!-- <div class="col-lg-2 col-md-3 col-6">
+                    <div class="logo">
+                        <a href="#home"><img src="assets/img/logo.png" alt="logo" /></a>
+                    </div>
+                </div> -->
+				<div class="col-lg-10 col-md-9 col-6">
+					<div class="responsive-menu"></div>
+					<div class="mainmenu">
+						<ul id="primary-menu">
+							<li>
+								<a class="nav-link active" href="#home">Home</a>
+							</li>
+							<li>
+								<a class="nav-link" href="#about">About</a>
+							</li>
+							<li>
+								<a class="nav-link" href="#skills">Skills</a>
+							</li>
+							<li>
+								<a class="nav-link" href="#product">Product</a>
+							</li>
+							<li>
+								<a class="nav-link" href="#overview">Overview</a>
+							</li>
+							<li>
+								<a class="nav-link" href="#blog">Blog</a>
+							</li>
+							<li>
+								<a class="nav-link" href="#contact">Contact</a>
+							</li>
+							{{#if layoutVM.isLogged}}
+								<form id="frmLogout" method="post" action="/account/logout"></form>
+								<li><a id="lnkLogout" href="javascript:;">Logout</a></li>
+							{{else}}
+								<li><a class="appao-btn" href="account/login">Login</a></li>
+							{{/if}}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- header section end -->
 	
     {{{body}}}
 	<!-- footer section start -->
@@ -191,6 +238,11 @@
 	<script src="/assets/js/switcher.js"></script>
 	<!-- main JS -->
 	<script src="/assets/js/main.js"></script>
+	<script type="text/javascript">
+		$('#lnkLogout').on('click', function() {
+			$('#frmLogout').submit();
+		});
+	</script>
 </body>
 
 </html>

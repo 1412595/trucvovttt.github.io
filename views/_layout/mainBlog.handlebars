@@ -61,7 +61,12 @@
 							<li>
 								<a class="nav-link" href="#contact">Contact</a>
 							</li>
-							<li><a class="appao-btn" href="/logout">Logout</a></li>
+							{{#if layoutVM.isLogged}}
+								<form id="frmLogout" method="post" action="/account/logout"></form>
+								<li><a id="lnkLogout" href="javascript:;">Logout</a></li>
+							{{else}}
+								<li><a class="appao-btn" href="account/login">Login</a></li>
+							{{/if}}
 						</ul>
 					</div>
 				</div>
@@ -195,10 +200,10 @@
 					<div class="config-title">Blog Pages</div>
 					<ul>
 						<li>
-							<a href="blog.html">Blog</a>
+							<a href="blog/blog-index">Blog</a>
 						</li>
 						<li>
-							<a href="blog-detail.html">Blog Details</a>
+							<a href="blog/blog-detail">Blog Details</a>
 						</li>
 					</ul>
 				</div>
@@ -237,6 +242,11 @@
 	<script src="/assets/js/switcher.js"></script>
 	<!-- main JS -->
 	<script src="/assets/js/main.js"></script>
+    <script type="text/javascript">
+		$('#lnkLogout').on('click', function() {
+			$('#frmLogout').submit();
+		});
+	</script>
 </body>
 
 </html>

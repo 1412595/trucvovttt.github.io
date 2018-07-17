@@ -22,8 +22,9 @@ router.post('/login', (req, res) => {
     accountRepo.login(user).then(rows => {
         if (rows.length > 0) {
             if (rows[0].accountType === 1) {
+                req.session.isLogged = true;
+                req.session.user = rows[0];
                 blogRepo.getAll().then(b => {
-                    console.log(b);
                     var vm = {
                         layout: 'mainBlog.handlebars',
                         blog: b
@@ -32,7 +33,6 @@ router.post('/login', (req, res) => {
                 });
             } else {
                 blogRepo.lastestPost().then(l => {
-                    console.log(l);
                     var vm = {
                         layout: 'main.handlebars',
                         blog: l
@@ -46,14 +46,12 @@ router.post('/login', (req, res) => {
                 errorMsg: 'Login failed',
                 layout: 'mainAccount.handlebars'
             };
-            console.log("fail");
             res.render('account/login', vm);
         }
     });
 });
 
 router.post('/logout', (req, res) => {
-    // console.log('aaa');
     req.session.isLogged = false;
     req.session.user = null;
     res.redirect(req.headers.referer);
