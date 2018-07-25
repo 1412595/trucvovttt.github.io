@@ -1,3 +1,9 @@
+{{#if showError}}
+<div class="alert alert-danger">
+	<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	<center>{{errorMsg}}! Username or Password is wrong.</center>
+</div>
+{{/if}}
 <section class="blog-area blog-page" id="login">
     <div class="container">
         <div class="row">
@@ -9,7 +15,7 @@
                             <input type="text" placeholder="Enter username" required="true" name="username">
                             <label>Password</label>
                             <input type="password" placeholder="Enter password" required="true" name="rawPWD">
-                            <button type="submit" name="login-submit"><a href="blog/blog-index"><span>Login</span></a></button>  
+                            <button type="submit" name="login-submit"><a href="blog"><span>Login</span></a></button>  
                         </div>
                     </form>
                 </div>

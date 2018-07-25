@@ -1,5 +1,5 @@
 var express = require('express');
-    // SHA256 = require('crypto-js/sha256');
+    SHA256 = require('crypto-js/sha256');
 
 
 var accountRepo = require('../repos/accountRepo');
@@ -21,7 +21,7 @@ router.post('/login', (req, res) => {
     };
     accountRepo.login(user).then(rows => {
         if (rows.length > 0) {
-            if (rows[0].accountType === 1) {
+            // if (rows[0].accountType === 1) {
                 req.session.isLogged = true;
                 req.session.user = rows[0];
                 blogRepo.getAll().then(b => {
@@ -29,17 +29,17 @@ router.post('/login', (req, res) => {
                         layout: 'mainBlog.handlebars',
                         blog: b
                     };
-                    res.render('blog/blog-index', vm);
+                    res.render('blog/index', vm);
                 });
-            } else {
-                blogRepo.lastestPost().then(l => {
-                    var vm = {
-                        layout: 'main.handlebars',
-                        blog: l
-                    };
-                    res.render('home/index',vm);
-                });
-            }
+            // } else {
+            //     blogRepo.lastestPost().then(l => {
+            //         var vm = {
+            //             layout: 'main.handlebars',
+            //             blog: l
+            //         };
+            //         res.render('home/index',vm);
+            //     });
+            // }
         } else {
             var vm = {
                 showError: true,

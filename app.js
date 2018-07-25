@@ -71,13 +71,13 @@ app.get('/', (req, res) => {
     res.redirect('/home');
 });
 
-// app.use(handleLayoutMDW);
-// app.use(handle404MDW);
+app.use(handleLayoutMDW);
 
 app.use('/home', homeController);
 app.use('/blog', blogController);
 app.use('/account', accountController);
 
+//app.use(handle404MDW);
 
 app.listen(3000, () => {
     console.log('Site running on port 3000');

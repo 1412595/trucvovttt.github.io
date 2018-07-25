@@ -73,12 +73,8 @@
 							<li>
 								<a class="nav-link" href="#contact">Contact</a>
 							</li>
-							{{#if layoutVM.isLogged}}
-								<form id="frmLogout" method="post" action="/account/logout"></form>
-								<li><a id="lnkLogout" href="javascript:;">Logout</a></li>
-							{{else}}
-								<li><a class="appao-btn" href="account/login">Login</a></li>
-							{{/if}}
+								<a class="appao-btn" href="account/login">Login</a>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -193,13 +189,16 @@
 					<i class="icofont icofont-wheel"></i>
 				</a>
 				<div class="switched-options">
+					<div class="config-title">Home Pages</div>
+						<ul>
+							<li>
+								<a href="home/index">Home</a>
+							</li>
+						</ul>
 					<div class="config-title">Blog Pages</div>
 					<ul>
 						<li>
-							<a href="blog.html">Blog</a>
-						</li>
-						<li>
-							<a href="blog-detail.html">Blog Details</a>
+							<a href="blog/blog-index">Blog</a>
 						</li>
 					</ul>
 				</div>

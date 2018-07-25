@@ -5,6 +5,10 @@ var blogRepo = require('../repos/blogRepo');
 var messageRepo = require('../repos/messageRepo');
 
 router.get('/', (req, res) => {
+    if (req.session.isLogged == true) {
+        req.session.isLogged == false;
+        req.session.destroy();
+    }
     blogRepo.lastestPost().then(rows => {
         //console.log(rows);
         var vm = {
@@ -16,6 +20,10 @@ router.get('/', (req, res) => {
 });
 
 router.get('/index', (req, res) => {
+    if (req.session.isLogged == true) {
+        req.session.isLogged == false;
+        req.session.destroy();
+    }
     blogRepo.lastestPost().then(rows => {
         //console.log(rows);
         var vm = {
