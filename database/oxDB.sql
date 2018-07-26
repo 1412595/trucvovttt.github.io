@@ -23,7 +23,7 @@ create table account (
 
 create table message (
 	messageID int primary key auto_increment,
-    uname nvarchar(50),
+    uname nvarchar(50) unique,
     email varchar(50),
     subject nvarchar(100),
     content nvarchar(1000)
@@ -31,7 +31,7 @@ create table message (
 
 create table blog (
 	blogID int primary key auto_increment,
-    blogTitle nvarchar(200),
+    blogTitle nvarchar(200) unique,
     blogContent nvarchar (1000),
     blogDate datetime,
     blogImage varchar(50),

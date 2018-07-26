@@ -5,17 +5,21 @@ var categoryRepo = require('../repos/categoryRepo');
 var blogRepo = require('../repos/blogRepo');
 
 router.get('/', (req, res) => {
-    // console.log(req.session.isLogged);
     if (req.session.isLogged == false) {
         var vm = {
             layout: 'mainAccount.handlebars'
         }
         res.render('account/login', vm);
     } else {
-        blogRepo.getAll().then(rows => {
+        var t0 = blogRepo.getAll();
+        var t1 = categoryRepo.getAll();
+        var t2 = blogRepo.lastestPost();
+        Promise.all([t0, t1, t2]).then(([a, c, l]) => {
             var vm = {
                 layout: 'mainBlog.handlebars',
-                blog: rows
+                blogs:a,
+                category: c,
+                list: l
             };
             res.render('blog/index', vm);
         });
@@ -30,10 +34,15 @@ router.get('/index', (req, res) => {
         res.render('account/login', vm);
         // res.redirect('account/login');
     } else {
-        blogRepo.getAll().then(rows => {
+        var t0 = blogRepo.getAll();
+        var t1 = categoryRepo.getAll();
+        var t2 = blogRepo.lastestPost();
+         Promise.all([t0, t1, t2]).then(([a, c, l]) => {
             var vm = {
                 layout: 'mainBlog.handlebars',
-                blog: rows
+                blogs:a,
+                category: c,
+                list: l
             };
             res.render('blog/index', vm);
         });
@@ -56,10 +65,13 @@ router.get('/detail/:id', (req, res) => {
 });
 
 router.get('/add', (req, res) => {
-    categoryRepo.getAll().then(rows => {
+    var t1 = categoryRepo.getAll();
+    var t2 = blogRepo.lastestPost();
+    Promise.all([t1, t2]).then(([c, l]) => {
         var vm = {
             layout: 'mainBlog.handlebars',
-            category: rows
+            category: c,
+            list: l
         };
         res.render('blog/add', vm);
     });
@@ -75,19 +87,24 @@ router.post('/addBlog', (req, res) => {
             blogView: 0,
             blogComment: 0,
             categoryID: value[0].categoryID,
-            accountID: 1
-            // accountID: req.body.accountID
+            // accountID: 1
+            accountID: req.session.idAccount
         }
-        // console.log(newBlog);
+        console.log(newBlog);
         blogRepo.new(newBlog);
-        blogRepo.getAll().then(rows => {
-            var vm = {
-                layout: 'mainBlog.handlebars',
-                blog: rows
-            };
-            res.render('blog/index', vm);
-        });
-        // res.redirect('blog-index');
+        // var t0 = blogRepo.getAll();
+        // var t1 = categoryRepo.getAll();
+        // var t2 = blogRepo.lastestPost();
+        //  Promise.all([t0, t1, t2]).then(([a, c, l]) => {
+        //     var vm = {
+        //         layout: 'mainBlog.handlebars',
+        //         blogs:a,
+        //         category: c,
+        //         list: l
+        //     };
+        //     res.render('blog/index', vm);
+        // });
+        res.redirect('/blog');
     });
 });
 

@@ -9,10 +9,10 @@ module.exports = (req, res, next) => {
             blog: rows,
             suppliers: rows,
             isLogged: req.session.isLogged,
-            curUser: req.session.user
+        	user: req.session.user
         };
 
-        console.log(res.locals.layoutVM.curUser);
+        // console.log(res.locals.layoutVM.user);
 
         next();
     });

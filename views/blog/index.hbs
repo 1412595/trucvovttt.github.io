@@ -1,41 +1,57 @@
-
-		<!-- blog section start -->
-		<section class="blog-area blog-page" id="blog">
-			<div class="container">
-				<div class="row">
-					{{#each blog}}
-					<div class="col-lg-4 col-md-6">
-					    <div class="single-post">
-							<div class="post-thumbnail">
-								<a href="blog/blog-detail/{{blogID}}"><img src="/img/blog/{{blogImage}}" alt="blog"></a>
-							</div>
-							<div class="post-details">
-								<div class="post-author">
-									<a href="#"><i class="icofont icofont-user"></i>{{username}}</a>
-									<a href="#"><i class="icofont icofont-speech-comments"></i>{{blogComment}}</a>
-									<a href="#"><i class="icofont icofont-calendar"></i>{{blogDate}}</a>
-								</div>
-								<h4 class="post-title"><a href="blog/blog-detail/{{blogID}}">{{blogTitle}}</a></h4>
-								<p>{{blogContent}}</p>
-							</div>
-						</div>
-					</div>
-					{{/each}}
-				</div>
-				<div class="row">
-					<div class="col-lg-12">
-					    <div class="pagination">
-                            <ul>
-                                <li><a href="#"><i class="icofont icofont-curved-left"></i></a></li>
-                                <li><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#"><i class="icofont icofont-curved-right"></i></a></li>
-                            </ul>
-						</div>
-					</div>
-				</div>
+<div class="row">
+	{{#each blogs}}
+	<div class="col-lg-4 col-md-4">
+		<div class="single-post">
+			<div class="post-thumbnail">
+				<a href="blog/detail/{{blogID}}">
+					<img src="/img/blog/{{blogImage}}" alt="blog">
+				</a>
 			</div>
-		</section><!-- blog section end -->
-		
+			<div class="post-details">
+				<div class="post-author">
+					<a href="#">
+						<i class="icofont icofont-user"></i>{{username}}</a>
+					<a href="#">
+						<i class="icofont icofont-speech-comments"></i>{{blogComment}}</a>
+					<a href="#">
+						<i class="icofont icofont-calendar"></i>{{blogDate}}</a>
+				</div>
+				<h4 class="post-title">
+					<a href="blog/detail/{{blogID}}">{{blogTitle}}</a>
+				</h4>
+				<p>{{blogContent}}</p>
+			</div>
+		</div>
+	</div>
+	{{/each}}
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="pagination">
+			<ul>
+				<li>
+					<a href="#">
+						<i class="icofont icofont-curved-left"></i>
+					</a>
+				</li>
+				<li>
+					<a href="#">1</a>
+				</li>
+				<li>
+					<a href="#">2</a>
+				</li>
+				<li>
+					<a href="#">3</a>
+				</li>
+				<li>
+					<a href="#">4</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="icofont icofont-curved-right"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

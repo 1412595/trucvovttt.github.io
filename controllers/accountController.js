@@ -24,13 +24,9 @@ router.post('/login', (req, res) => {
             // if (rows[0].accountType === 1) {
                 req.session.isLogged = true;
                 req.session.user = rows[0];
-                blogRepo.getAll().then(b => {
-                    var vm = {
-                        layout: 'mainBlog.handlebars',
-                        blog: b
-                    };
-                    res.render('blog/index', vm);
-                });
+                req.session.idAccount = rows[0].accountID;
+                console.log(req.session.idAccount);
+                res.redirect('/blog');
             // } else {
             //     blogRepo.lastestPost().then(l => {
             //         var vm = {
@@ -54,7 +50,7 @@ router.post('/login', (req, res) => {
 router.post('/logout', (req, res) => {
     req.session.isLogged = false;
     req.session.user = null;
-    res.redirect(req.headers.referer);
+    res.redirect("/");
 });
 
 module.exports = router;

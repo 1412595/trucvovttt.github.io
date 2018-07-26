@@ -49,9 +49,8 @@ router.post('/newMessage', (req, res) => {
         subject: req.body.subject,
         content: req.body.content
     }
-    console.log(mess);
     messageRepo.new(mess);
-    res.redirect('index');
+    res.redirect('req.headers.referer');
 });
 
 
