@@ -33,3 +33,7 @@ exports.getByName = (name) => {
     var sql = `select * from category where categoryName = '${name}'`;
     return db.load(sql);
 }
+
+exports.searchBlog = (search) => {
+    var sql = `select * from blog where blogTitle like '%${search}%'`;
+}

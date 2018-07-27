@@ -108,4 +108,14 @@ router.post('/addBlog', (req, res) => {
     });
 });
 
+router.post('/search-titleBlog', (req, res) => {
+    blogRepo.searchBlog(req.body.nameBlog).then(value => {
+        var vm = {
+            layout: 'mainBlog.handlebars',
+            blogs: value
+        }
+        res.render(blog/index);
+    });
+});
+
 module.exports = router;

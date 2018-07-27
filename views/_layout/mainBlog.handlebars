@@ -113,8 +113,8 @@
 				<div class="col-lg-4">
 					<div class="sidebar">
 						<div class="widget">
-							<form action="#">
-								<input type="text" name="search" placeholder="Search here">
+							<form action="search-titleBlog">
+								<input type="text" name="nameBlog" placeholder="Search here">
 								<button type="submit">Go</button>
 							</form>
 						</div>
@@ -133,7 +133,7 @@
 							<ul>
 								{{#each list}}
 								<li>
-									<a href="#">{{blogTitle}}</a>
+									<a href="blog/detail/{{blogID}}">{{blogTitle}}</a>
 								</li>
 								{{/each}}
 							</ul>
