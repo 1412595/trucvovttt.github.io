@@ -53,4 +53,15 @@ router.post('/logout', (req, res) => {
     res.redirect("/");
 });
 
+router.get('/all', (req, res) => {
+    accountRepo.getAll().then(value => {
+        var vm = {
+            all: value,
+            layout: 'mainAccount.handlebars'
+        };
+        res.render('account/all',vm);
+    });
+});
+
+
 module.exports = router;

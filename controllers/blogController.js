@@ -87,23 +87,9 @@ router.post('/addBlog', (req, res) => {
             blogView: 0,
             blogComment: 0,
             categoryID: value[0].categoryID,
-            // accountID: 1
             accountID: req.session.idAccount
         }
-        console.log(newBlog);
         blogRepo.new(newBlog);
-        // var t0 = blogRepo.getAll();
-        // var t1 = categoryRepo.getAll();
-        // var t2 = blogRepo.lastestPost();
-        //  Promise.all([t0, t1, t2]).then(([a, c, l]) => {
-        //     var vm = {
-        //         layout: 'mainBlog.handlebars',
-        //         blogs:a,
-        //         category: c,
-        //         list: l
-        //     };
-        //     res.render('blog/index', vm);
-        // });
         res.redirect('/blog');
     });
 });
@@ -114,7 +100,24 @@ router.post('/search-titleBlog', (req, res) => {
             layout: 'mainBlog.handlebars',
             blogs: value
         }
-        res.render(blog/index);
+        res.render(blog/index, vm);
+    });
+});
+
+router.post('/addComment', (req, res) => {
+    blogRepo.allComment(req.body.blogID).then(value => {
+        var cmt = {
+            blogID: req.body.blogID,
+            accountID: req.session.idAccount,
+            commentDate: req.body.clock,
+            commentContent: req.body.message
+        }
+        blogRepo.addComment(cmt);
+        var vm = {
+            layout: 'mainBlog.handlebars',
+            comments: value
+        }
+        res.render(blog/detail,vm);
     });
 });
 

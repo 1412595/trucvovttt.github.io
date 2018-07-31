@@ -61,7 +61,8 @@ Insert into category (`categoryName`, `categoryDescription`) values
 
 Insert into account (`username`,`password`,`accountDOB`,`accountGender`,`accountEmail`,`accountType`,`status`) values
 ('a','123456','2000-05-15',1,'a@gmail.com',1,1),
-('b','123456','2001-05-15',1,'b@gmail.com',1,1);
+('b','123456','2001-05-15',1,'b@gmail.com',1,1),
+('c','123456','2001-05-15',1,'b@gmail.com',1,0);
 
 Insert into blog (`blogTitle`,`blogContent`,`blogDate`,`blogImage`,`blogView`,`blogComment`,`categoryID`,`accountID`) values 
 ('abc1','x','2017-05-15 00:00:00','blog1.jpg',100,10,1,1),

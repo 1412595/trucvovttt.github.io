@@ -214,3 +214,25 @@ function refrClock() {
     if (month < 10) { month = "0" + month }
     document.getElementById("clock").value = year + '-' + month + '-' + date + ' ' + h + ':' + m + ':' + s;
 }
+
+
+$(document).ready(function(){
+    $("#delete").click(function(){
+        $("table tbody").find('input[name="record"]').each(function(){
+            if($(this).is(":checked")){
+                $(this).parents("tr").remove();
+            }
+        });
+	});
+	// $('#status').on('change', function(){
+	// 	this.value = this.checked ? 1 : 0;
+	// 	// alert(this.value);
+	//  }).change();
+	var id = $("#status").val();
+	console.log(id);
+	if (id === 1)
+		$("#status").prop('checked', true);
+	else
+		$("#status").prop('checked', false);
+
+});

@@ -1,0 +1,54 @@
+<section class="blog-area blog-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12" id="list">
+                <div class="panel panel-default panel-table">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col col-xs-6">
+                                <h3 class="panel-title">All account</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped table-bordered table-list" id="table-dkhp">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <em class="glyphicon glyphicon-check"></em>
+                                    </th>
+                                    <th>accountID</th>
+                                    <th>username</th>
+                                    <th>accountDOB</th>
+                                    <th>accountGender</th>
+                                    <th>accountEmail</th>
+                                    <th>accountType</th>
+                                    <th>status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each all}}
+                                <tr>
+                                    <td align="center">
+                                        <input type="checkbox" name="record">
+                                    </td>
+                                    <td>{{accountID}}</td>
+                                    <td>{{username}}</td>
+                                    <td id="clock">{{accountDOB}}</td>
+                                    <td>{{accountGender}}</td>
+                                    <td>{{accountEmail}}</td>
+                                    <td>{{accountType}}</td>
+                                    <td align="center">
+                                        <input type="checkbox" name="status" id="status" value="{{status}}">
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                        <button type="button" id="delete" class="btn btn-danger pull-right">Xóa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

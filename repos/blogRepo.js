@@ -37,3 +37,13 @@ exports.getByName = (name) => {
 exports.searchBlog = (search) => {
     var sql = `select * from blog where blogTitle like '%${search}%'`;
 }
+
+exports.addComment = (c) => {
+    var sql = `insert into blogComment(blogID,accountID,commentDate,commentContent) values
+    ('${c.blogID}','${c.accountID}','${c.commentDate}','${c.commentContent}')`;
+    return db.save(sql);
+}
+
+exports.allComment = (id) => {
+    var sql = `select * from blog where blogID = ${id}`;
+}
